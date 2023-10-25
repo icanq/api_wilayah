@@ -4,6 +4,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { PrismaErrorFilter } from './filters/prisma-error.filter';
 
 async function bootstrap(): Promise<NestFastifyApplication> {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -15,6 +16,7 @@ async function bootstrap(): Promise<NestFastifyApplication> {
     },
   );
   app.setGlobalPrefix('api');
+  app.useGlobalFilters(new PrismaErrorFilter());
   const port = AppModule.port || 3000;
   await app.listen(port);
 

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { WilayahModule } from './modules/wilayah/wilayah.module';
 
 @Module({
   imports: [
@@ -9,6 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       envFilePath: '.env',
       isGlobal: true,
     }),
+    WilayahModule,
   ],
   controllers: [AppController],
   providers: [AppService],
