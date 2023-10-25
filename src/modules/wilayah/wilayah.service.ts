@@ -29,6 +29,7 @@ export class WilayahService {
     if (name) {
       whereFilters['name'] = {
         contains: name,
+        mode: 'insensitive',
       };
     }
     if (provinceId) {
@@ -51,6 +52,7 @@ export class WilayahService {
     if (name) {
       whereFilters['name'] = {
         contains: name,
+        mode: 'insensitive',
       };
     }
     if (cityId) {
@@ -79,6 +81,7 @@ export class WilayahService {
     if (name) {
       whereFilters['name'] = {
         contains: name,
+        mode: 'insensitive',
       };
     }
     if (districtId) {
