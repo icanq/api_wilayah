@@ -19,10 +19,11 @@ export class WilayahController {
   async findCity(
     @Query('name') name?: string,
     @Query('provinceId') provinceId?: string,
+    @Query('id') id?: string,
   ) {
-    if (!name && !provinceId) {
+    if (!id && !name && !provinceId) {
       return {
-        message: 'name or provinceId must be present',
+        message: 'id or name or provinceId must be present',
       };
     }
     try {
@@ -37,10 +38,11 @@ export class WilayahController {
   async findDistricts(
     @Query('name') name?: string,
     @Query('cityId') cityId?: string,
+    @Query('id') id?: string,
   ) {
-    if (!name && !cityId) {
+    if (!name && !cityId && !id) {
       return {
-        message: 'name or cityId must be present',
+        message: 'id or name or cityId must be present',
       };
     }
     try {
@@ -55,10 +57,11 @@ export class WilayahController {
   async findSubDistricts(
     @Query('name') name?: string,
     @Query('districtId') districtId?: string,
+    @Query('id') id?: string,
   ) {
-    if (!name && !districtId) {
+    if (!id && !name && !districtId) {
       return {
-        message: 'name or districtId must be present',
+        message: 'id or name or districtId must be present',
       };
     }
     try {

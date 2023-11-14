@@ -25,8 +25,21 @@ export class WilayahService {
     return province;
   }
 
-  async findCity(name?: string, provinceId?: string): Promise<City[]> {
-    const whereFilters = { name: undefined, provinceId: undefined };
+  async findCity(
+    id?: string,
+    name?: string,
+    provinceId?: string,
+  ): Promise<City[]> {
+    const whereFilters = {
+      id: undefined,
+      name: undefined,
+      provinceId: undefined,
+    };
+    if (id) {
+      whereFilters['id'] = {
+        equals: +id,
+      };
+    }
     if (name) {
       whereFilters['name'] = {
         contains: name,
@@ -48,8 +61,17 @@ export class WilayahService {
     return cities;
   }
 
-  async findDistricts(name?: string, cityId?: string): Promise<Districts[]> {
-    const whereFilters = { name: undefined, cityId: undefined };
+  async findDistricts(
+    id?: string,
+    name?: string,
+    cityId?: string,
+  ): Promise<Districts[]> {
+    const whereFilters = { id: undefined, name: undefined, cityId: undefined };
+    if (id) {
+      whereFilters['id'] = {
+        equals: +id,
+      };
+    }
     if (name) {
       whereFilters['name'] = {
         contains: name,
@@ -75,10 +97,20 @@ export class WilayahService {
   }
 
   async findSubDistricts(
+    id?: string,
     name?: string,
     districtId?: string,
   ): Promise<SubDistricts[]> {
-    const whereFilters = { name: undefined, districtId: undefined };
+    const whereFilters = {
+      id: undefined,
+      name: undefined,
+      districtId: undefined,
+    };
+    if (id) {
+      whereFilters['id'] = {
+        equals: +id,
+      };
+    }
     if (name) {
       whereFilters['name'] = {
         contains: name,
