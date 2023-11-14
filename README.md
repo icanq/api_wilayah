@@ -1,73 +1,79 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# API Wilayah Documentation
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Overview
+This repository contains the API for managing and retrieving data related to administrative regions in a given country. The API allows clients to fetch information about provinces, cities, districts, subdistricts, and postal codes.
 
 ## Installation
 
-```bash
-$ yarn install
-```
 
-## Running the app
+### Clone the repository
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+git clone [repository-url]
 ```
 
-## Test
+### Navigate to the repository directory
 
 ```bash
-# unit tests
-$ yarn run test
+cd [repository-name]
 
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+# Install dependencies
+npm install
 ```
 
-## Support
+### Run the application
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm start:dev
 
-## Stay in touch
+# or
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+npm start
+```
 
-## License
+# Usage
 
-Nest is [MIT licensed](LICENSE).
+The API exposes several endpoints for retrieving regional data:
+
+## Provinces
+
+GET /wilayah/provinces: Retrieves a list of provinces. Can be filtered by the 'name' query parameter.
+
+## Cities
+
+GET /wilayah/cities: Retrieves a list of cities. Can be filtered by 'name', 'provinceId', or 'id' query parameters.
+
+## Districts
+
+GET /wilayah/districts: Retrieves a list of districts. Can be filtered by 'name', 'cityId', or 'id' query parameters.
+
+## Subdistricts
+
+GET /wilayah/subdistricts: Retrieves a list of subdistricts. Can be filtered by 'name', 'districtId', or 'id' query parameters.
+
+## Postal Codes
+
+GET /wilayah/postal-codes: Retrieves a list of postal codes. Can be filtered by 'code' or 'subDistrictId' query parameters.
+
+# Examples
+
+```javascript
+// Fetch provinces
+fetch('/wilayah/provinces')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// Fetch cities by province ID
+fetch('/wilayah/cities?provinceId=12345')
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
+
+# Error Handling
+The API uses conventional HTTP response codes to indicate the success or failure of an API request.
+
+# Contributing
+Just submitting pull requests to us.
+
+# Contact
+For any queries, you can reach out to my [linkedin](https://linkedin.com/in/natawijayaichsan).
